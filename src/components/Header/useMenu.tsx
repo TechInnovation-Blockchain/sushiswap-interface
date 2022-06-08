@@ -116,7 +116,7 @@ const useMenu: UseMenu = () => {
         ],
       }
 
-      if (featureEnabled(Feature.TRIDENT_MIGRATION, chainId)) {
+      if (chainId === ChainId.MATIC) {
         tridentLiquidity.items.push({
           key: 'trident-migrate',
           title: i18n._(t`Migrate`),

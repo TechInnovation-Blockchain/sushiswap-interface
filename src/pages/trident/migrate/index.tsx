@@ -35,7 +35,7 @@ const MigrateLiquidity = () => {
   )
 }
 
-MigrateLiquidity.Guard = NetworkGuard(Feature.TRIDENT_MIGRATION)
+MigrateLiquidity.Guard = NetworkGuard(Feature.TRIDENT)
 MigrateLiquidity.Layout = TridentLayout
 
 export default MigrateLiquidity

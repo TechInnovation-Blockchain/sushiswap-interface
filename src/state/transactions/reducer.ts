@@ -9,7 +9,6 @@ import {
   clearAllTransactions,
   finalizeTransaction,
   SerializableTransactionReceipt,
-  setRouteInfo,
   updatePrivateTxStatus,
 } from './actions'
 
@@ -35,7 +34,6 @@ export interface TransactionState {
   [chainId: number]: {
     [txHash: string]: TransactionDetails
   }
-  lastRouteInfo?: any
 }
 
 export const initialState: TransactionState = {}
@@ -127,8 +125,5 @@ export default createReducer(initialState, (builder) =>
       // update new state
       tx.lastCheckedBlockNumber = blockNumber
       tx.privateTx = { state, status }
-    })
-    .addCase(setRouteInfo, (transactions, info: any) => {
-      transactions.lastRouteInfo = info
     })
 )

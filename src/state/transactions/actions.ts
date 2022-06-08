@@ -39,6 +39,3 @@ export const updatePrivateTxStatus = createAction<{
   blockNumber: number
   status: PrivateTxStatus
 }>('transactions/updatePrivateTxStatus')
-export const setRouteInfo = createAction<{
-  info: any
-}>('transactions/setRouteInfo')
