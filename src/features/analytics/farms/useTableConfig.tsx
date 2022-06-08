@@ -1,7 +1,6 @@
 import { getAddress } from '@ethersproject/address'
-import { Token } from '@sushiswap/core-sdk'
-import { CurrencyLogo, CurrencyLogoArray } from 'app/components/CurrencyLogo'
-import Typography from 'app/components/Typography'
+import { Currency, Token } from '@sushiswap/core-sdk'
+import { CurrencyLogoArray } from 'app/components/CurrencyLogo'
 import { formatNumber, formatPercent } from 'app/functions'
 import { useAllTokens } from 'app/hooks/Tokens'
 import { useMemo } from 'react'
@@ -100,22 +99,15 @@ export const useTableConfig = (chainId: number, farms: any) => {
         accessor: 'rewards',
         minWidth: 150,
         // @ts-ignore
-        Cell: (props) => (
-          <div className="flex flex-col !items-end !justify-center">
-            {props.value.map((reward: any, i: number) => (
-              <Typography
-                variant="sm"
-                weight={700}
-                key={i}
-                className="flex gap-1.5 text-high-emphesis justify-center items-center"
-                component="span"
-              >
-                {formatNumber(reward.rewardPerDay)}
-                <CurrencyLogo currency={reward.currency} size={16} />
-              </Typography>
-            ))}
-          </div>
-        ),
+        Cell: (props) => {
+          return (
+            <CurrencyLogoArray
+              currencies={props.value.map((reward: { currency: Currency }) => reward.currency)}
+              size={20}
+              dense
+            />
+          )
+        },
         align: 'right',
       },
       {
